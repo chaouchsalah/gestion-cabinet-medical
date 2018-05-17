@@ -1,0 +1,7 @@
+com/eheio/hello/model/Maladie.class
+com/eheio/hello/model/Consultation.class
+com/eheio/hello/model/Medecin.class
+com/eheio/hello/model/Mesure.class
+com/eheio/hello/web/HelloController.class
+com/eheio/hello/model/Patient.class
+com/eheio/hello/model/Personne.class

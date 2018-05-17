@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{15}#%line
+				%msg\n</pattern>
+		</encoder>
+	</appender>
+	<appender name="dailySTDOUT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/resources/LOG/cabinet.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>cabinet.%d{yyyy-MM-dd}.log</FileNamePattern>
+
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.eheio.account">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="info" />
+		<appender-ref ref="dailySTDOUT" />
+	</logger>
+
+	<root>
+		<level value="error" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
