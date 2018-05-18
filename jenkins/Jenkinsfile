@@ -24,5 +24,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Style') {
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
     }
 }
