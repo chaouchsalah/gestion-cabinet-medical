@@ -13,13 +13,14 @@ pipeline {
                 '''
             }
         }
+
         stage ('Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                    junit 'build/reports/**/*.xml'
                 }
             }
         }
@@ -29,13 +30,8 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit 'build/reports/*.xml'
                 }
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
