@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 success {
-                    sh 'cd jenkins/scripts touch *.xml'
+                    sh 'mv jenkins/scripts/*.xml ./*.xml'
                     junit 'jenkins/scripts/*.xml'
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
             }
             post {
                 always {
-                    sh 'cd jenkins/scripts touch *.xml'
+                    sh 'mv jenkins/scripts/*.xml ./*.xml'
                     junit 'jenkins/scripts/*.xml'
                 }
             }
