@@ -18,20 +18,10 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
-            post {
-                success {
-                    junit 'jenkins/scripts/*.xml'
-                }
-            }
         }
         stage('Test') {
             steps {
                 sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'jenkins/scripts/*.xml'
-                }
             }
         }
     }
