@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 success {
-                    junit 'target/site/**/*.xml'
+                    junit 'jenkins/scripts/*.xml'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/site/*.xml'
+                    junit 'jenkins/scripts/*.xml'
                 }
             }
         }
