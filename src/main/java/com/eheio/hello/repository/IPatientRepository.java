@@ -1,5 +1,5 @@
 package com.eheio.hello.repository;
 
-public class UserRepository  {
+public interface IPatientRepository {
 
 }
