@@ -1,5 +1,5 @@
 package com.eheio.hello.repository;
 
-public interface IMedecinRepository {
+public interface IMesureRepository {
 
 }
