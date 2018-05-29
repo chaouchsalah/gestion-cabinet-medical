@@ -1,16 +1,21 @@
 package com.eheio.hello.model;
 
 import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * . @author Salah eddine
  */
+@Entity
+@Table(name = "maladie")
 public class Maladie {
   /**
    * . Maladie id field
@@ -19,38 +24,12 @@ public class Maladie {
   @Column(name = "maladie_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer maladieId;
-  /**
-   * . Minimum field
-   */
-  @Column(name = "minimum")
-  private Integer minimum;
-  /**
-   * . Maximum field
-   */
-  @Column(name = "maximum")
-  private Integer maximum;
-  /**
-   * . List of mesures
-   */
+  @Column(name = "libelle")
+  private String libelle;
   @OneToMany
   @JoinColumn(name = "maladie_id")
-  private List<Mesure> mesures;
+  private List<Consultation> consultations;
   
-  /**
-   * . Constructor
-   * @param maladieId is the id of maladie
-   * @param minimum is the minimum
-   * @param maximum is the maximum
-   * @param mesures is the list of mesures
-   */
-  public Maladie(final Integer maladieId, final Integer minimum,
-      final Integer maximum, final List<Mesure> mesures) {
-    super();
-    this.maladieId = maladieId;
-    this.minimum = minimum;
-    this.maximum = maximum;
-    this.mesures = mesures;
-  }
 
   /**
    * . Getter of maladieId
@@ -70,53 +49,19 @@ public class Maladie {
   }
 
   /**
-   * . Getter of minimum
-   * @return the minimum
+   * . Getter libelle
+   * @return the libelle
    */
-  public Integer getMinimum() {
-    return minimum;
+  public String getLibelle() {
+    return libelle;
   }
 
   /**
-   * . Setter of minimum
-   * @param minimum
-   *          the minimum to set
+   * . Setter libelle
+   * @param libelle the libelle to set
    */
-  public void setMinimum(final Integer minimum) {
-    this.minimum = minimum;
+  public void setLibelle(String libelle) {
+    this.libelle = libelle;
   }
 
-  /**
-   * . Getter of maximum
-   * @return the maximum
-   */
-  public Integer getMaximum() {
-    return maximum;
-  }
-
-  /**
-   * . Setter of maximum
-   * @param maximum
-   *          the maximum to set
-   */
-  public void setMaximum(final Integer maximum) {
-    this.maximum = maximum;
-  }
-
-  /**
-   * . Getter of list of mesures
-   * @return the mesures
-   */
-  public List<Mesure> getMesures() {
-    return mesures;
-  }
-
-  /**
-   * . Setter of list of mesures
-   * @param mesures
-   *          the mesures to set
-   */
-  public void setMesures(final List<Mesure> mesures) {
-    this.mesures = mesures;
-  }
 }

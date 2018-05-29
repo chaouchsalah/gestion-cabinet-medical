@@ -1,6 +1,6 @@
 package com.eheio.hello.repository;
 
-import com.eheio.hello.model.User;
+import com.eheio.hello.model.UserInfo;
 import java.util.List;
 
 /**
@@ -12,29 +12,33 @@ public interface IUserRepository {
    * @param userId is the id of user patient to look for
    * @return user if found
    */
-  public User findById(int userId);
+  public UserInfo findById(int userId);
   
   /**
    * . Looks for a user by username
    * @param username the username of the user to look for
    * @return user if found
    */
-  public User findByUserName(String username);
+  public UserInfo findByUserName(String username);
+  
+  public UserInfo findMedecinData(String username);
+  
+  public UserInfo findPatientData(String username);
   
   /**
    * . Look for all users
    */
-  public List<User> findAll();
+  public List<UserInfo> findAll();
 
   /**
    * . Add a user
    */
-  public void addUser(User user);
+  public void addUser(UserInfo user);
 
   /**
    * . Update a user
    */
-  public void updateUser(User user);
+  public void updateUser(UserInfo user);
 
   /**
    * . Delete a user

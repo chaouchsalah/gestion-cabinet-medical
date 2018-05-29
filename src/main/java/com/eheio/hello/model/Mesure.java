@@ -1,23 +1,32 @@
 package com.eheio.hello.model;
 
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "mesure")
 public class Mesure {
   @Id
   @Column(name = "mesure_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer mesureId;
-  @ManyToOne(cascade = CascadeType.ALL)
-  private User user;
-  @ManyToOne(cascade = CascadeType.ALL)
-  private Maladie maladie;
-
+  @Column(name = "minimum")
+  private Integer minimum;
+  @Column(name = "maximum")
+  private Integer maximum;
+  @OneToMany
+  @JoinColumn(name = "mesure_id")
+  private List<MesureConsultation> mesureConsultations;
+  
   /**
+   * . Getter of mesureId
    * @return the mesureId
    */
   public Integer getMesureId() {
@@ -25,6 +34,7 @@ public class Mesure {
   }
 
   /**
+   * . Setter of mesureId
    * @param mesureId
    *          the mesureId to set
    */
@@ -33,32 +43,34 @@ public class Mesure {
   }
 
   /**
-   * @return the user
+   * . Getter of minimum
+   * @return the minimum
    */
-  public User getUser() {
-    return user;
+  public Integer getMinimum() {
+    return minimum;
   }
 
   /**
-   * @param user
-   *          the user to set
+   * . Setter of minimum
+   * @param minimum the minimum to set
    */
-  public void setUser(User user) {
-    this.user = user;
+  public void setMinimum(Integer minimum) {
+    this.minimum = minimum;
   }
 
   /**
-   * @return the maladie
+   * . Getter of maximum
+   * @return the maximum
    */
-  public Maladie getMaladie() {
-    return maladie;
+  public Integer getMaximum() {
+    return maximum;
   }
 
   /**
-   * @param maladie
-   *          the maladie to set
+   * . Setter of maximum
+   * @param maximum the maximum to set
    */
-  public void setMaladie(Maladie maladie) {
-    this.maladie = maladie;
+  public void setMaximum(Integer maximum) {
+    this.maximum = maximum;
   }
 }
