@@ -1,7 +1,1 @@
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/web/HelloController.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Mesure.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Consultation.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Maladie.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Personne.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Medecin.java
-/Users/salah13/Documents/salah/computer_science/java/spring/springmvc-xml-maven-thymeleaf/src/main/java/com/eheio/hello/model/Patient.java
+/Users/salah13/Documents/salah/computer_science/java/spring/gestion-cabinet-medical/src/main/java/com/eheio/hello/web/HelloController.java

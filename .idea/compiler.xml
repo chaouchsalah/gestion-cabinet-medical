@@ -7,12 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chaouch-salah-eddine" />
-        <module name="tp-spring-mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chaouch-salah-eddine" target="1.8" />
-      <module name="tp-spring-mvc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
