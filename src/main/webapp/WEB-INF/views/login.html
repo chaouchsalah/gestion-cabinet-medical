@@ -10,7 +10,11 @@
 <header th:replace="layout :: site-header"></header>
 <div class="container">
 
-    <h2 th:text="'Hello ' + ${name} + '!'"></h2>
+    <form method="POST" action="/loginAction">
+        Enter UserName:	<input type="text" name="username"/><br/><br/>
+        Enter Password: <input type="password" name="password"/> <br/><br/>
+        <input type="submit" value="Login"/>
+    </form>
 
 </div>
 <footer th:replace="layout :: site-footer"></footer>

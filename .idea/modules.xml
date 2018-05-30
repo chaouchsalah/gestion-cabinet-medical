@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/chaouch-salah-eddine.iml" filepath="$PROJECT_DIR$/chaouch-salah-eddine.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/main/main.iml" filepath="$PROJECT_DIR$/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tp-spring-mvc.iml" filepath="$PROJECT_DIR$/tp-spring-mvc.iml" />
     </modules>
   </component>
 </project>
