@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+
+    <title>Hello Spring MVC</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+
+    <form method="POST" action="/loginAction">
+        Enter UserName:	<input type="text" name="username"/><br/><br/>
+        Enter Password: <input type="password" name="password"/> <br/><br/>
+        <input type="submit" value="Login"/>
+    </form>
+
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>
