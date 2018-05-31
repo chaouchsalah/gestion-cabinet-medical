@@ -50,7 +50,7 @@ public class UserInfo {
    * . Get the value of the field name
    * @return the name
    */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
@@ -59,7 +59,7 @@ public class UserInfo {
    * @param name
    *          the name to set
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
@@ -67,7 +67,7 @@ public class UserInfo {
    * . Getter of role
    * @return the role
    */
-  public String getRole() {
+  public final String getRole() {
     return role;
   }
 
@@ -75,7 +75,7 @@ public class UserInfo {
    * . Setter of role
    * @param role the role to set
    */
-  public void setRole(String role) {
+  public final void setRole(String role) {
     this.role = role;
   }
 
@@ -83,7 +83,7 @@ public class UserInfo {
    * . Getter password
    * @return the password
    */
-  public String getPassword() {
+  public final String getPassword() {
     return password;
   }
 
@@ -91,31 +91,39 @@ public class UserInfo {
    * . Setter password
    * @param password the password to set
    */
-  public void setPassword(String password) {
+  public final void setPassword(String password) {
     this.password = password;
   }
 
-  public Integer getUserId() {
+  public final Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(Integer userId) {
+  public final void setUserId(Integer userId) {
     this.userId = userId;
   }
 
-  public String getUsername() {
+  public final String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public final void setUsername(String username) {
     this.username = username;
   }
 
-  public byte getEnabled() {
+  public final byte getEnabled() {
     return enabled;
   }
 
-  public void setEnabled(byte enabled) {
+  public final void setEnabled(byte enabled) {
     this.enabled = enabled;
+  }
+
+  public final List<Consultation> getConsultations() {
+    return consultations;
+  }
+
+  public final void setConsultations(List<Consultation> consultations) {
+    this.consultations = consultations;
   }
 }

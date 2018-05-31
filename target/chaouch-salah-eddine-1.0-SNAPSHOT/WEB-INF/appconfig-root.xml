@@ -34,6 +34,7 @@
 		</property>
 	</bean>
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="SessionFactory" ref="SessionFactory" /> </bean>
+        <property name="SessionFactory" ref="SessionFactory" />
+	</bean>
 
 </beans>

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/patient")
-public class PatientController {
+class PatientController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(@RequestParam(value="name", required=false, defaultValue="Patient") String name, Model model) {
         model.addAttribute("name", name);

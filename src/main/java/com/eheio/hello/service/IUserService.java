@@ -13,4 +13,7 @@ public interface IUserService {
   
   @Secured ({"ROLE_PATIENT","ROLE_MEDECIN"})
   UserInfo getDataByUserName(String userName);
+
+  void register(UserInfo user);
+
 }

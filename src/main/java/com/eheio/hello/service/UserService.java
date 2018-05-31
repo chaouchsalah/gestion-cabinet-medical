@@ -9,21 +9,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements IUserService {
   @Autowired
-  IUserRepository userRepository;
+  private IUserRepository userRepository;
 
   @Override
-  public UserInfo getMedecinData(String userName) {
+  public final UserInfo getMedecinData(String userName) {
     return userRepository.findMedecinData(userName);
   }
 
   @Override
-  public UserInfo getPatientData(String userName) {
+  public final UserInfo getPatientData(String userName) {
     return userRepository.findPatientData(userName);
   }
 
   @Override
-  public UserInfo getDataByUserName(String userName) {
+  public final UserInfo getDataByUserName(String userName) {
     return userRepository.findByUserName(userName);
+  }
+
+  @Override
+  public final void register(UserInfo user) {
+    userRepository.addUser(user);
   }
 
 }

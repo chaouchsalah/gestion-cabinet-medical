@@ -10,25 +10,31 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.logging.Logger;
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private UserDetailsService userService;
+    private static final Logger LOGGER = Logger.getLogger(String.valueOf(WebSecurityConfigurerAdapter.class));
 
   @Autowired
-  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+  public final void configureGlobal(AuthenticationManagerBuilder auth) {
+      try {
+          auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+      } catch (Exception e) {
+          LOGGER.warning(e.getMessage());
+      }
   }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    PasswordEncoder encoder = new BCryptPasswordEncoder();
-    return encoder;
+      return new BCryptPasswordEncoder();
   }
   
   @Override
-  protected void configure(HttpSecurity http) throws Exception {
+  public final void configure(HttpSecurity http) throws Exception {
       http.authorizeRequests().antMatchers("/patient/**").hasRole("PATIENT")
               .antMatchers("/medecin/**").hasRole("MEDECIN")
               .and()

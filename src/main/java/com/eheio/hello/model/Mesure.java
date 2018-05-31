@@ -29,7 +29,7 @@ public class Mesure {
    * . Getter of mesureId
    * @return the mesureId
    */
-  public Integer getMesureId() {
+  public final Integer getMesureId() {
     return mesureId;
   }
 
@@ -38,7 +38,7 @@ public class Mesure {
    * @param mesureId
    *          the mesureId to set
    */
-  public void setMesureId(Integer mesureId) {
+  public final void setMesureId(Integer mesureId) {
     this.mesureId = mesureId;
   }
 
@@ -46,7 +46,7 @@ public class Mesure {
    * . Getter of minimum
    * @return the minimum
    */
-  public Integer getMinimum() {
+  public final Integer getMinimum() {
     return minimum;
   }
 
@@ -54,7 +54,7 @@ public class Mesure {
    * . Setter of minimum
    * @param minimum the minimum to set
    */
-  public void setMinimum(Integer minimum) {
+  public final void setMinimum(Integer minimum) {
     this.minimum = minimum;
   }
 
@@ -62,7 +62,7 @@ public class Mesure {
    * . Getter of maximum
    * @return the maximum
    */
-  public Integer getMaximum() {
+  public final Integer getMaximum() {
     return maximum;
   }
 
@@ -70,7 +70,15 @@ public class Mesure {
    * . Setter of maximum
    * @param maximum the maximum to set
    */
-  public void setMaximum(Integer maximum) {
+  public final void setMaximum(Integer maximum) {
     this.maximum = maximum;
+  }
+
+  public final List<MesureConsultation> getMesureConsultations() {
+    return mesureConsultations;
+  }
+
+  public final void setMesureConsultations(List<MesureConsultation> mesureConsultations) {
+    this.mesureConsultations = mesureConsultations;
   }
 }

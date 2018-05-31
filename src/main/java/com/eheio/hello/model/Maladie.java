@@ -35,7 +35,7 @@ public class Maladie {
    * . Getter of maladieId
    * @return the maladieId
    */
-  public Integer getMaladieId() {
+  public final Integer getMaladieId() {
     return maladieId;
   }
 
@@ -44,7 +44,7 @@ public class Maladie {
    * @param maladieId
    *          the maladieId to set
    */
-  public void setMaladieId(final Integer maladieId) {
+  public final void setMaladieId(final Integer maladieId) {
     this.maladieId = maladieId;
   }
 
@@ -52,7 +52,7 @@ public class Maladie {
    * . Getter libelle
    * @return the libelle
    */
-  public String getLibelle() {
+  public final String getLibelle() {
     return libelle;
   }
 
@@ -60,8 +60,15 @@ public class Maladie {
    * . Setter libelle
    * @param libelle the libelle to set
    */
-  public void setLibelle(String libelle) {
+  public final void setLibelle(String libelle) {
     this.libelle = libelle;
   }
 
+  public final List<Consultation> getConsultations() {
+    return consultations;
+  }
+
+  public final void setConsultations(List<Consultation> consultations) {
+    this.consultations = consultations;
+  }
 }

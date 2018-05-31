@@ -9,22 +9,19 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired
-  IUserRepository userRepository;
+  private IUserRepository userRepository;
   
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+  public final UserDetails loadUserByUsername(String username) {
     UserInfo user = userRepository.findByUserName(username);
     GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
-    UserDetails userDetails = new User(user.getUsername(),
+    return new User(user.getUsername(),
         user.getPassword(), Arrays.asList(authority));
-    return userDetails;
   }
 
 }

@@ -49,7 +49,7 @@ public class Consultation {
    * . Get the consultation id field
    * @return the consultationId
    */
-  public Integer getConsultationId() {
+  public final Integer getConsultationId() {
     return consultationId;
   }
 
@@ -58,7 +58,7 @@ public class Consultation {
    * @param consultationId
    *          the consultationId to set
    */
-  public void setConsultationId(final Integer consultationId) {
+  public final void setConsultationId(final Integer consultationId) {
     this.consultationId = consultationId;
   }
 
@@ -66,7 +66,7 @@ public class Consultation {
    * . Get the patient field
    * @return the patient
    */
-  public UserInfo getPatient() {
+  public final UserInfo getPatient() {
     return patient;
   }
 
@@ -75,7 +75,7 @@ public class Consultation {
    * @param patient
    *          the patient to set
    */
-  public void setPatient(final UserInfo patient) {
+  public final void setPatient(final UserInfo patient) {
     this.patient = patient;
   }
 
@@ -83,7 +83,7 @@ public class Consultation {
    * . Get the medecin field
    * @return the medecin
    */
-  public UserInfo getMedecin() {
+  public final UserInfo getMedecin() {
     return medecin;
   }
 
@@ -92,7 +92,7 @@ public class Consultation {
    * @param medecin
    *          the medecin to set
    */
-  public void setMedecin(final UserInfo medecin) {
+  public final void setMedecin(final UserInfo medecin) {
     this.medecin = medecin;
   }
 
@@ -100,7 +100,7 @@ public class Consultation {
    * . Getter of maladie
    * @return the maladie
    */
-  public Maladie getMaladie() {
+  public final Maladie getMaladie() {
     return maladie;
   }
 
@@ -108,7 +108,7 @@ public class Consultation {
    * . Setter of maladie
    * @param maladie the maladie to set
    */
-  public void setMaladie(Maladie maladie) {
+  public final void setMaladie(Maladie maladie) {
     this.maladie = maladie;
   }
 
@@ -116,7 +116,7 @@ public class Consultation {
    * . Getter mesure consultation
    * @return the mesureConsultations
    */
-  public List<MesureConsultation> getMesureConsultations() {
+  public final List<MesureConsultation> getMesureConsultations() {
     return mesureConsultations;
   }
 
@@ -124,7 +124,7 @@ public class Consultation {
    * . Setter mesure consultation
    * @param mesureConsultations the mesureConsultations to set
    */
-  public void setMesureConsultations(List<MesureConsultation> mesureConsultations) {
+  public final void setMesureConsultations(List<MesureConsultation> mesureConsultations) {
     this.mesureConsultations = mesureConsultations;
   }
 }
