@@ -36,3 +36,12 @@ create table mesure_consultation (
     FOREIGN KEY (consultation_id) REFERENCES consultation(consultation_id),
     FOREIGN KEY (mesure_id) REFERENCES mesure(mesure_id)
 );
+
+create table mesure_patient (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    mesure_id int,
+    patient_id int,
+    valeur int,
+    FOREIGN KEY (mesure_id) REFERENCES mesure(mesure_id),
+    FOREIGN KEY (patient_id) REFERENCES user(user_id)
+)

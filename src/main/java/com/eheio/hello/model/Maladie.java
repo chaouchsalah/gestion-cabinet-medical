@@ -1,5 +1,7 @@
 package com.eheio.hello.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +16,8 @@ import javax.persistence.Table;
 /**
  * . @author Salah eddine
  */
-@Entity
+@Component
+@Entity(name = "maladie")
 @Table(name = "maladie")
 public class Maladie {
   /**
@@ -26,9 +29,6 @@ public class Maladie {
   private Integer maladieId;
   @Column(name = "libelle")
   private String libelle;
-  @OneToMany
-  @JoinColumn(name = "maladie_id")
-  private List<Consultation> consultations;
   
 
   /**
@@ -62,13 +62,5 @@ public class Maladie {
    */
   public final void setLibelle(String libelle) {
     this.libelle = libelle;
-  }
-
-  public final List<Consultation> getConsultations() {
-    return consultations;
-  }
-
-  public final void setConsultations(List<Consultation> consultations) {
-    this.consultations = consultations;
   }
 }

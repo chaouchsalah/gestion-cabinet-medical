@@ -30,6 +30,8 @@ public interface IUserRepository {
    */
   List<UserInfo> findAll();
 
+  List<UserInfo> findAllPatients();
+
   /**
    * . Add a user
    */

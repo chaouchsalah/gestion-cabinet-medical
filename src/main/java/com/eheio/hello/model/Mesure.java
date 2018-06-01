@@ -1,5 +1,7 @@
 package com.eheio.hello.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,20 +12,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Component
+@Entity(name = "mesure")
 @Table(name = "mesure")
 public class Mesure {
   @Id
   @Column(name = "mesure_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer mesureId;
+  @Column(name = "libelle")
+  private String libelle;
   @Column(name = "minimum")
   private Integer minimum;
   @Column(name = "maximum")
   private Integer maximum;
-  @OneToMany
-  @JoinColumn(name = "mesure_id")
-  private List<MesureConsultation> mesureConsultations;
   
   /**
    * . Getter of mesureId
@@ -74,11 +76,11 @@ public class Mesure {
     this.maximum = maximum;
   }
 
-  public final List<MesureConsultation> getMesureConsultations() {
-    return mesureConsultations;
+  public String getLibelle() {
+    return libelle;
   }
 
-  public final void setMesureConsultations(List<MesureConsultation> mesureConsultations) {
-    this.mesureConsultations = mesureConsultations;
+  public void setLibelle(String libelle) {
+    this.libelle = libelle;
   }
 }

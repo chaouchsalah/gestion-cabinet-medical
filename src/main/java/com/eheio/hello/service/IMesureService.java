@@ -1,5 +1,10 @@
 package com.eheio.hello.service;
 
-public interface IMesureService {
+import com.eheio.hello.model.Mesure;
 
+import java.util.List;
+
+public interface IMesureService {
+    List<Mesure> findAll();
+    Mesure findById(int id);
 }

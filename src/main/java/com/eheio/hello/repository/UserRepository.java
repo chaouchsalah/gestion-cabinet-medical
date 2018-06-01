@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 @Repository
 public class UserRepository implements IUserRepository {
   @Autowired
@@ -33,8 +32,8 @@ public class UserRepository implements IUserRepository {
   @Override
   public final UserInfo findById(int userId) {
     @SuppressWarnings("unchecked")
-    Query query = this.getCurrentSession().createQuery("from user where user_id = ?");
-    query.setParameter("user_id", userId);
+    Query query = this.getCurrentSession().createQuery("from user where user_id = :id");
+    query.setParameter("id", userId);
     return (UserInfo) query.uniqueResult();
   }
 
@@ -43,6 +42,13 @@ public class UserRepository implements IUserRepository {
     @SuppressWarnings("unchecked")
     Query<UserInfo> query = 
         this.getCurrentSession().createQuery("from user");
+    return query.getResultList();
+  }
+
+  @Override
+  public List<UserInfo> findAllPatients() {
+    Query<UserInfo> query =
+            this.getCurrentSession().createQuery("from user where role='ROLE_PATIENT'");
     return query.getResultList();
   }
 
@@ -68,9 +74,6 @@ public class UserRepository implements IUserRepository {
 
   @Override
   public final UserInfo findByUserName(String username) {
-    /*org.springframework.security.crypto.password.PasswordEncoder encoder
-            = new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder();
-    String passwd = encoder.encode("salah2");*/
     Query query =
         this.getCurrentSession().createQuery("from user where username = :username");
     query.setParameter("username", username);

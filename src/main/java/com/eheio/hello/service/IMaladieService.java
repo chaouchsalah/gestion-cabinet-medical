@@ -1,5 +1,8 @@
 package com.eheio.hello.service;
 
-public interface IMaladieService {
+import com.eheio.hello.model.Maladie;
 
+public interface IMaladieService {
+    int addMaladie(Maladie maladie);
+    Maladie findById(int id);
 }

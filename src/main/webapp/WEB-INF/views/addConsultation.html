@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<head th:replace="layout :: site-head">
+
+    <title>Hello Spring MVC</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+    <form method="POST" action="/medecin/consultation">
+        <div class="form-group">
+            <label for="patient">Patient</label>
+            <select class="form-control" id="patient" name="patientSelected">
+                <option th:each="patient : ${patients}" th:value="${patient.userId}" th:text="${patient.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="maladie">Maladie</label>
+            <input type="text" name="maladieStr" id="maladie"/>
+        </div>
+        <div class="form-group">
+            <label for="mesures">Mesures</label>
+            <div id="mesures">
+            <th:block th:each="mesure : ${mesures}">
+                <input type="checkbox" name="mesures" th:value="${mesure.mesureId}" /><span th:text="${mesure.libelle}"></span>
+            </th:block>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="observation">Observation</label>
+            <input type="text" name="observation" id="observation">
+        </div>
+        <input type="submit" value="Ajouter Consultation"/>
+    </form>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>

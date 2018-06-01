@@ -1,29 +1,25 @@
 package com.eheio.hello.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 
-@Entity
+import javax.persistence.*;
+
+@Component
+@Entity(name = "mesure_consultation")
 @Table(name = "mesure_consultation")
-class MesureConsultation {
+public class MesureConsultation {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "valeur")
-  private int valeur;
-
   @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "mesure_id")
   private Mesure mesure;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  //,fetch=FetchType.EAGER
+  @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+  @JoinColumn(name = "consultation_id")
   private Consultation consultation;
   
   /**
@@ -72,13 +68,5 @@ class MesureConsultation {
    */
   public void setMesure(Mesure mesure) {
     this.mesure = mesure;
-  }
-
-  public int getValeur() {
-    return valeur;
-  }
-
-  public void setValeur(int valeur) {
-    this.valeur = valeur;
   }
 }

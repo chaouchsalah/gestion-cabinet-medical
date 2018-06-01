@@ -1,22 +1,17 @@
 package com.eheio.hello.model;
 
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * . @author Salah eddine
  */
-@Entity
+@Component
+@Entity(name = "consultation")
 @Table(name = "consultation")
 public class Consultation {
   /**
@@ -26,24 +21,28 @@ public class Consultation {
   @Column(name = "consultation_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer consultationId;
+  @Column(name = "observation")
+  private String observation;
+  @Column(name = "date_consultation")
+  private Date dateConsultation;
   /**
    * . The patient whom this consultation concerns
    */
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+  @JoinColumn(name = "patient_id")
   private UserInfo patient;
   /**
    * . The medecin whom this consultation concerns
    */
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+  @JoinColumn(name = "medecin_id")
   private UserInfo medecin;
   /**
-   * . The maladie whom this consultation concerns
+   * . The maladie which this consultation concerns
    */
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+  @JoinColumn(name = "maladie_id")
   private Maladie maladie;
-  @OneToMany
-  @JoinColumn(name = "consultation_id")
-  private List<MesureConsultation> mesureConsultations;
 
   /**
    * . Get the consultation id field
@@ -112,19 +111,19 @@ public class Consultation {
     this.maladie = maladie;
   }
 
-  /**
-   * . Getter mesure consultation
-   * @return the mesureConsultations
-   */
-  public final List<MesureConsultation> getMesureConsultations() {
-    return mesureConsultations;
-  }
+    public String getObservation() {
+        return observation;
+    }
 
-  /**
-   * . Setter mesure consultation
-   * @param mesureConsultations the mesureConsultations to set
-   */
-  public final void setMesureConsultations(List<MesureConsultation> mesureConsultations) {
-    this.mesureConsultations = mesureConsultations;
-  }
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
+
+    public Date getDateConsultation() {
+        return dateConsultation;
+    }
+
+    public void setDateConsultation(Date dateConsultation) {
+        this.dateConsultation = dateConsultation;
+    }
 }

@@ -1,5 +1,7 @@
 package com.eheio.hello.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 /**
  * . @author Salah eddine
  */
+@Component
 @Entity(name = "user")
 @Table(name = "user")
 public class UserInfo {
@@ -42,9 +45,6 @@ public class UserInfo {
   private String role;
   @Column(name = "enabled")
   private byte enabled;
-  @OneToMany
-  @JoinColumn(name = "user_id")
-  private List<Consultation> consultations;
 
   /**
    * . Get the value of the field name
@@ -117,13 +117,5 @@ public class UserInfo {
 
   public final void setEnabled(byte enabled) {
     this.enabled = enabled;
-  }
-
-  public final List<Consultation> getConsultations() {
-    return consultations;
-  }
-
-  public final void setConsultations(List<Consultation> consultations) {
-    this.consultations = consultations;
   }
 }

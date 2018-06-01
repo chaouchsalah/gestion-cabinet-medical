@@ -1,5 +1,6 @@
 com/eheio/hello/repository/IMesureRepository.class
 com/eheio/hello/model/Maladie.class
+com/eheio/hello/repository/MesureRepository.class
 com/eheio/hello/web/HelloController.class
 com/eheio/hello/web/PatientController.class
 com/eheio/hello/service/UserDetailsServiceImpl.class
@@ -10,10 +11,12 @@ com/eheio/hello/repository/IUserRepository.class
 com/eheio/hello/model/UserInfo.class
 com/eheio/hello/service/IMaladieService.class
 com/eheio/hello/repository/IConsultationRepository.class
+com/eheio/hello/service/MesureService.class
 com/eheio/hello/model/Consultation.class
 com/eheio/hello/web/UserController.class
 com/eheio/hello/service/IConsultationService.class
 org/springframework/security/samples/config/SecurityWebApplicationInitializer.class
+com/eheio/hello/repository/ConsultationRepository.class
 com/eheio/hello/service/IMesureService.class
 org/springframework/security/samples/config/SecurityConfig.class
 com/eheio/hello/model/MesureConsultation.class
