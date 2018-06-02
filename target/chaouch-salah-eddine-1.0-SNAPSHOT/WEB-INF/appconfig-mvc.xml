@@ -10,6 +10,8 @@
     <mvc:annotation-driven/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:view-controller path="/login" view-name="login"/>
+    <mvc:view-controller path="/patient" view-name="mesures"/>
+    <mvc:view-controller path="/patient/addMesure" view-name="addMesure"/>
 
     <!-- **************************************************************** -->
     <!--  THYMELEAF-SPECIFIC ARTIFACTS                                    -->

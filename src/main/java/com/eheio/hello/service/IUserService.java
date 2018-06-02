@@ -21,5 +21,6 @@ public interface IUserService {
 
   void register(UserInfo user);
   UserInfo findById(int id);
+  int findIdByUsername(String username);
 
 }

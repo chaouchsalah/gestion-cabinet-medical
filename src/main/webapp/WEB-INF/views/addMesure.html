@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+
+    <title>Hello Spring MVC</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+
+    <form method="POST" action="/patient/mesures">
+        <select id="mesure" name="mesure">
+        </select>
+        <input type="number" name="valeur"/>
+        <input type="submit" value="Add mesure"/>
+    </form>
+
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/patient/mesuresValue",
+            type: "GET",
+            success: function (mesures) {
+                for (mesure in mesures) {
+                    $("#mesure").append("<option value='" + mesures[mesure].mesure.mesureId + "'>" + mesures[mesure].mesure.libelle + "</option>")
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

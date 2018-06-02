@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -47,6 +49,13 @@ public class ConsultationRepository implements IConsultationRepository {
         this.getCurrentSession().save(consultation);
         Query query =
                 this.getCurrentSession().createQuery("select max(consultationId) from consultation");
+        return Integer.parseInt(query.getSingleResult().toString());
+    }
+
+    @Override
+    public int findLastConsultation() {
+        Query query =
+                this.getCurrentSession().createQuery("select consultationId from consultation order by date_consultation desc").setMaxResults(1);
         return Integer.parseInt(query.getSingleResult().toString());
     }
 }

@@ -22,4 +22,9 @@ public class MesureConsultationService implements IMesureConsultationService {
     public List<MesureConsultation> findAll() {
         return mesureConsultationRepository.findAll();
     }
+
+    @Override
+    public List<MesureConsultation> findByConsultation(int id) {
+        return mesureConsultationRepository.findByConsultation(id);
+    }
 }

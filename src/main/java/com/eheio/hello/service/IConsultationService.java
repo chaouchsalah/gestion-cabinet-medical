@@ -9,4 +9,5 @@ public interface IConsultationService {
     List<Consultation> findAll();
     Consultation findById(int id);
     int addConsultation(Consultation consultation);
+    int findLastConsultation();
 }

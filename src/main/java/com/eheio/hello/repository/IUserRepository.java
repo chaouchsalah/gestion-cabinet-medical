@@ -46,4 +46,5 @@ public interface IUserRepository {
    * . Delete a user
    */
   void deleteUser(int userId);
+  int findIdByUsername(String username);
 }

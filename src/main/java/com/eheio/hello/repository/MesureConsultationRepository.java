@@ -38,10 +38,14 @@ public class MesureConsultationRepository implements IMesureConsultationReposito
     public List<MesureConsultation> findAll() {
         Query<MesureConsultation> query =
                 this.getCurrentSession().createQuery("from mesure_consultation");
-        /*List<MesureConsultation> liste = query.getResultList();
-        for(MesureConsultation elem:liste){
-            System.out.println(elem.getConsultation());
-        }*/
+        return query.getResultList();
+    }
+
+    @Override
+    public List<MesureConsultation> findByConsultation(int id) {
+        Query<MesureConsultation> query =
+                this.getCurrentSession().createQuery("from mesure_consultation where consultation_id=:id");
+        query.setParameter("id",id);
         return query.getResultList();
     }
 }

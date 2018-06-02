@@ -27,4 +27,9 @@ public class ConsultationService implements IConsultationService {
     public int addConsultation(Consultation consultation) {
         return consultationRepository.addConsultation(consultation);
     }
+
+    @Override
+    public int findLastConsultation() {
+        return consultationRepository.findLastConsultation();
+    }
 }

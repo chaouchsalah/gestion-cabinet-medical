@@ -73,6 +73,14 @@ public class UserRepository implements IUserRepository {
   }
 
   @Override
+  public int findIdByUsername(String username) {
+    Query query =
+            this.getCurrentSession().createQuery("select id from user where username = :username");
+    query.setParameter("username", username);
+    return Integer.parseInt(query.uniqueResult().toString());
+  }
+
+  @Override
   public final UserInfo findByUserName(String username) {
     Query query =
         this.getCurrentSession().createQuery("from user where username = :username");

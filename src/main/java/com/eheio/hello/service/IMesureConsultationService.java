@@ -7,4 +7,5 @@ import java.util.List;
 public interface IMesureConsultationService {
     void addMesureConsultation(MesureConsultation mesureConsultation);
     List<MesureConsultation> findAll();
+    List<MesureConsultation> findByConsultation(int id);
 }

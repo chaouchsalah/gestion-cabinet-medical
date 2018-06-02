@@ -45,4 +45,9 @@ public class UserService implements IUserService {
     return userRepository.findById(id);
   }
 
+  @Override
+  public int findIdByUsername(String username) {
+    return userRepository.findIdByUsername(username);
+  }
+
 }
