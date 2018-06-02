@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+
+    <title>Hello Spring MVC</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<select id="patients">
+
+</select>
+<div class="container" style="width: 400px;height: 400px">
+    <canvas id="myChart" width="250" height="250"></canvas>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    $(document).ready(function(){
+        $.ajax({
+            url: "/medecin/mesuresValue",
+            type: "GET",
+            data: {"patient":1},
+            success: function (mesures) {
+                var tension = [];
+                var poids = [];
+                var glycimie = [];
+                var temperature = [];
+                for (mesure in mesures) {
+                    var id = mesures[mesure].mesure.mesureId;
+                    var valeur = mesures[mesure].valeur;
+                    if(id==1){
+                        tension.push(valeur);
+                    }else if(id==2){
+                        poids.push(valeur);
+                    }else if(id==3){
+                        glycimie.push(valeur);
+                    }else{
+                        temperature.push(valeur);
+                    }
+                }
+                var longueur;
+                if(tension.length>poids.length&&tension.length>glycimie.length&&tension.length>temperature.length){
+                    longueur = tension.length;
+                }else if(poids.length>tension.length&&poids.length>glycimie.length&&poids.length>temperature.length){
+                    longueur = poids.length;
+                }else if(glycimie.length>tension.length&&glycimie.length>poids.length&&glycimie.length>temperature.length){
+                    longueur = glycimie.length;
+                }else{
+                    longueur = temperature.length;
+                }
+                drawChart(tension,poids,glycimie,temperature,longueur);
+            }
+        });
+    });
+    function drawChart(tension,poids,glycimie,temperature,longueur) {
+        var labels = [];
+        for(var i=0;i<longueur;i++){
+            labels.push(i.toString());
+        }
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Tension',
+                    data: tension,
+                    borderColor: [
+                        'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 1,
+                    fill: false
+                },
+                    {
+                        label: 'Poids',
+                        data: poids,
+                        borderColor: [
+                            'rgba(120,99,132,1)'
+                        ],
+                        borderWidth: 1,
+                        fill: false
+                    },
+                    {
+                        label: 'Glycimie',
+                        data: glycimie,
+                        borderColor: [
+                            'rgba(66, 244, 176,1)'
+                        ],
+                        borderWidth: 1,
+                        fill: false
+                    },
+                    {
+                        label: 'Temperature',
+                        data: temperature,
+                        borderColor: [
+                            'rgba(244, 65, 175,1)'
+                        ],
+                        borderWidth: 1,
+                        fill: false
+                    }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

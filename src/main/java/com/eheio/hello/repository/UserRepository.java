@@ -97,10 +97,10 @@ public class UserRepository implements IUserRepository {
   }
 
   @Override
-  public final UserInfo findPatientData(String username) {
+  public UserInfo findPatientData(int id) {
     Query query =
-            this.getCurrentSession().createQuery("from user where username = :username and role='ROLE_PATIENT'");
-    query.setParameter("username", username);
+            this.getCurrentSession().createQuery("from user where user_id = :id and role='ROLE_PATIENT'");
+    query.setParameter("id", id);
     return (UserInfo) query.uniqueResult();
   }
 

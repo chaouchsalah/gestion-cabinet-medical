@@ -1,9 +1,6 @@
 package com.eheio.hello.web;
 
-import com.eheio.hello.model.Consultation;
-import com.eheio.hello.model.Maladie;
-import com.eheio.hello.model.MesureConsultation;
-import com.eheio.hello.model.UserInfo;
+import com.eheio.hello.model.*;
 import com.eheio.hello.repository.ConsultationRepository;
 import com.eheio.hello.repository.MesureRepository;
 import com.eheio.hello.service.*;
@@ -12,10 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -37,6 +31,8 @@ class MedecinController {
     @Autowired
     IMaladieService maladieService;
     @Autowired
+    IMesurePatientService mesurePatientService;
+    @Autowired
     MesureConsultation mesureConsultation;
     @Autowired
     Consultation consultation;
@@ -44,7 +40,8 @@ class MedecinController {
     Maladie maladie;
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String hello(Model model) {
-        model.addAttribute("consultations",consultationService.findAll());
+        List<Consultation> consultations = consultationService.findAll();
+        model.addAttribute("consultations",consultations);
         return "consultation";
     }
     @RequestMapping(value = "/consultations", method = RequestMethod.GET)
@@ -82,6 +79,16 @@ class MedecinController {
                 mesureConsultationService.addMesureConsultation(mesureConsultation);
             }
         }
-        return "hello";
+        return "consultation";
+    }
+    @ResponseBody
+    @RequestMapping(value = "/patients", method = RequestMethod.GET)
+    public UserInfo findPatients(@RequestParam String patient) {
+        return patientService.getPatientData(Integer.parseInt(patient));
+    }
+    @ResponseBody
+    @RequestMapping(value = "/mesuresValue", method = RequestMethod.GET)
+    public List<MesurePatient> addMesure(@RequestParam String patient) {
+        return mesurePatientService.findByPatient(Integer.parseInt(patient));
     }
 }

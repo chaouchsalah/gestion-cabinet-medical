@@ -50,6 +50,7 @@ class PatientController {
         int idPatient = patientService.findIdByUsername(auth.getName());
         mesurePatient.setMesure(mesureService.findById(Integer.parseInt(mesure)));
         mesurePatient.setPatient(patientService.findById(idPatient));
+        mesurePatient.setValeur(Integer.parseInt(valeur));
         mesurePatientService.addMesure(mesurePatient);
         return "mesures";
     }

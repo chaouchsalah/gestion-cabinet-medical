@@ -23,7 +23,7 @@ public interface IUserRepository {
   
   UserInfo findMedecinData(String username);
   
-  UserInfo findPatientData(String username);
+  UserInfo findPatientData(int id);
   
   /**
    * . Look for all users

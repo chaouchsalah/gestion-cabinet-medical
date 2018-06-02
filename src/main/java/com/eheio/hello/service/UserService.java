@@ -21,8 +21,8 @@ public class UserService implements IUserService {
   }
 
   @Override
-  public final UserInfo getPatientData(String userName) {
-    return userRepository.findPatientData(userName);
+  public final UserInfo getPatientData(int id) {
+    return userRepository.findPatientData(id);
   }
 
   @Override

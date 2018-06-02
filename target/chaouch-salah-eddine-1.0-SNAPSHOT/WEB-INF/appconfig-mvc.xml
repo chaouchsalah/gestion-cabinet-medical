@@ -12,6 +12,7 @@
     <mvc:view-controller path="/login" view-name="login"/>
     <mvc:view-controller path="/patient" view-name="mesures"/>
     <mvc:view-controller path="/patient/addMesure" view-name="addMesure"/>
+    <mvc:view-controller path="/medecin/mesures" view-name="mesurePatient"/>
 
     <!-- **************************************************************** -->
     <!--  THYMELEAF-SPECIFIC ARTIFACTS                                    -->

@@ -12,7 +12,7 @@ public interface IUserService {
   UserInfo getMedecinData(String userName);
   
   @Secured ({"ROLE_PATIENT","ROLE_MEDECIN"})
-  UserInfo getPatientData(String userName);
+  UserInfo getPatientData(int id);
   @Secured ({"ROLE_PATIENT","ROLE_MEDECIN"})
   List<UserInfo> getAllPatients();
   

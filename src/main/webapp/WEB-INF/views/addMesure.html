@@ -9,12 +9,17 @@
 <body>
 <header th:replace="layout :: site-header"></header>
 <div class="container">
-
-    <form method="POST" action="/patient/mesures">
-        <select id="mesure" name="mesure">
+    <div class="form-group">
+        <label for="mesure">Mesure:</label>
+        <select id="mesure" name="mesure" class="form-control">
         </select>
-        <input type="number" name="valeur"/>
-        <input type="submit" value="Add mesure"/>
+    </div>
+    <div class="form-group">
+        <label for="valeur">Valeur:</label>
+        <select id="valeur" name="valeur" class="form-control">
+        </select>
+    </div>
+        <button id="add" class="btn btn-primary">Add mesure</button>
     </form>
 
 </div>
@@ -29,6 +34,20 @@
                     $("#mesure").append("<option value='" + mesures[mesure].mesure.mesureId + "'>" + mesures[mesure].mesure.libelle + "</option>")
                 }
             }
+        });
+        $("#add").click(function(){
+            var mesure = $("#mesure").val();
+            var valeur = $("#valeur").val();
+            $.ajax({
+                url: "/patient/mesures",
+                type: "POST",
+                data: {"mesure":mesure,"valeur":valeur},
+                success: function (mesures) {
+                    for (mesure in mesures) {
+                        $("#mesure").append("<option value='" + mesures[mesure].mesure.mesureId + "'>" + mesures[mesure].mesure.libelle + "</option>")
+                    }
+                }
+            });
         });
     });
 </script>
