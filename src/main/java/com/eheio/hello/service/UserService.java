@@ -12,42 +12,47 @@ import java.util.List;
 @Transactional
 @Service
 public class UserService implements IUserService {
-  @Autowired
-  private IUserRepository userRepository;
+    @Autowired
+    private IUserRepository userRepository;
 
-  @Override
-  public final UserInfo getMedecinData(String userName) {
-    return userRepository.findMedecinData(userName);
-  }
+    @Override
+    public final UserInfo getMedecinData(String userName) {
+        return userRepository.findMedecinData(userName);
+    }
 
-  @Override
-  public final UserInfo getPatientData(int id) {
-    return userRepository.findPatientData(id);
-  }
+    @Override
+    public final UserInfo getPatientData(int id) {
+        return userRepository.findPatientData(id);
+    }
 
-  @Override
-  public List<UserInfo> getAllPatients() {
-    return userRepository.findAllPatients();
-  }
+    @Override
+    public List<UserInfo> getAllPatients() {
+        return userRepository.findAllPatients();
+    }
 
-  @Override
-  public final UserInfo getDataByUserName(String userName) {
-    return userRepository.findByUserName(userName);
-  }
+    @Override
+    public final UserInfo getDataByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
 
-  @Override
-  public final void register(UserInfo user) {
-    userRepository.addUser(user);
-  }
+    @Override
+    public final void register(UserInfo user) {
+        userRepository.addUser(user);
+    }
 
-  @Override
-  public UserInfo findById(int id) {
-    return userRepository.findById(id);
-  }
+    @Override
+    public UserInfo findById(int id) {
+        return userRepository.findById(id);
+    }
 
-  @Override
-  public int findIdByUsername(String username) {
-    return userRepository.findIdByUsername(username);
-  }
+    @Override
+    public int findIdByUsername(String username) {
+        return userRepository.findIdByUsername(username);
+    }
+
+    @Override
+    public void delete(UserInfo user) {
+        userRepository.deleteUser(user.getUserId());
+    }
 
 }

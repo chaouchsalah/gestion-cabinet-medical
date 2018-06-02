@@ -31,7 +31,6 @@ public class UserRepository implements IUserRepository {
   
   @Override
   public final UserInfo findById(int userId) {
-    @SuppressWarnings("unchecked")
     Query query = this.getCurrentSession().createQuery("from user where user_id = :id");
     query.setParameter("id", userId);
     return (UserInfo) query.uniqueResult();
@@ -39,8 +38,7 @@ public class UserRepository implements IUserRepository {
 
   @Override
   public final List<UserInfo> findAll() {
-    @SuppressWarnings("unchecked")
-    Query<UserInfo> query = 
+    Query<UserInfo> query =
         this.getCurrentSession().createQuery("from user");
     return query.getResultList();
   }
